@@ -53,13 +53,13 @@ end
 %emax=emax/norm(emax);
 
 if param.eigStarter==1
-    [emax,lambdamax]=eigs(Q\Rzero,2); %Highest Eigenvalue
-    [lambdamax,indexmax]=max(diag(lambdamax));
-    emax=emax(:,indexmax);
+    [emax,lambdamax]=eigs(Q\Rzero,1,'largestreal'); %Highest Eigenvalue
+    %[lambdamax,indexmax]=max(diag(lambdamax));
+    %emax=emax(:,indexmax);
 else
-    [emax,lambdamax]=eigs(Q\Rzero,param.eigStarter);
-    emax=emax(:,param.eigStarter);
-    lambdamax=lambdamax(param.eigStarter,param.eigStarter);
+    [emax,lambdamax]=eigs(Q\Rzero,param.eigStarter,'largestreal');
+    %emax=emax(:,param.eigStarter);
+    %lambdamax=lambdamax(param.eigStarter,param.eigStarter);
 end
 
 if backtrack.backtrackingmode==1
